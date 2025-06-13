@@ -22,8 +22,8 @@ export default function SignupPage() {
         try {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user);
-            console.log("Signup success", response.data);
-            router.push("/login");
+            console.log("Signup success");
+            router.push(`/login`);
             
         } catch (error:any) {
             console.log("Signup failed", error.message);
@@ -33,6 +33,7 @@ export default function SignupPage() {
             setLoading(false);
         }
     }
+    
 
     useEffect(() => {
         if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {

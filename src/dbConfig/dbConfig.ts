@@ -4,9 +4,9 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export async function connect() {
-    console.log("🔍 Raw MONGO_URI from env:", process.env.MONGO_URI);
+    
     if (!process.env.MONGO_URI) {
-        console.log("❌ MONGO_URI is undefined. Something is wrong.");
+        console.log(" MONGO_URI is undefined. Something is wrong.");
         return;
     }
 
