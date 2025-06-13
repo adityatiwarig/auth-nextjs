@@ -23,7 +23,8 @@ export default function LoginPage() {
 
             console.log("Login success", response.data);
             
-            toast.success("Login success");
+            toast.success("Login success"); // USE NICHE DEKHEGA RETURN ME
+
             router.push("/profile");
         } catch (error: any) {
             console.log("Login failed", error.message);
@@ -43,7 +44,9 @@ export default function LoginPage() {
 
     return (
         <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-[#0f2027] via-[#203a43] to-[#2c5364] px-4">
+
             <Toaster position="top-right" reverseOrder={false} /> {/* ✅ Toast yahan show hoga */}
+            
             <div className="w-full max-w-md bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 shadow-xl text-white">
                 <h1 className="text-3xl font-bold text-center mb-6">
                     {loading ? "Processing..." : "Login"}
