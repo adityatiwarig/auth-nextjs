@@ -1,39 +1,38 @@
 "use client";
+
 import Link from "next/link";
 import React, { useEffect } from "react";
-import {useRouter} from "next/navigation";
+import { useRouter } from "next/navigation";
 import axios from "axios";
-import { toast } from "react-hot-toast";
-
-
-
+import { toast, Toaster } from "react-hot-toast"; // Toast import
 
 export default function SignupPage() {
     const router = useRouter();
+
     const [user, setUser] = React.useState({
         email: "",
         password: "",
         username: "",
     })
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
-    const [loading, setLoading] = React.useState(false);
+    const [buttonDisabled, setButtonDisabled] = React.useState(false); // 3 INPUT FILL KE BAAD SIGNUP ALLOW
+
+    const [loading, setLoading] = React.useState(false);  // DATA DALNE KE BAAD
 
     const onSignup = async () => {
         try {
             setLoading(true);
             const response = await axios.post("/api/users/signup", user);
             console.log("Signup success");
+            toast.success("Signup Successful!");
             router.push(`/login`);
             
         } catch (error:any) {
             console.log("Signup failed", error.message);
-            
             toast.error(error.message);
         }finally {
             setLoading(false);
         }
     }
-    
 
     useEffect(() => {
         if(user.email.length > 0 && user.password.length > 0 && user.username.length > 0) {
@@ -41,11 +40,11 @@ export default function SignupPage() {
         } else {
             setButtonDisabled(true);
         }
-    }, [user]);
-
+    }, [user]);  // DEPENDENCIES USER PE DEPEND KREGI
 
     return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        <Toaster position="top-right" reverseOrder={false} /> {/* Toast show yahi hoga top-right */}
         <h1>{loading ? "Processing" : "Signup"}</h1>
         <hr />
         <label htmlFor="username">username</label>
@@ -81,5 +80,4 @@ export default function SignupPage() {
             <Link href="/login">Visit login page</Link>
         </div>
     )
-
 }
