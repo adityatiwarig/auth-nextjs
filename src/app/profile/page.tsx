@@ -7,8 +7,10 @@ import {useRouter} from "next/navigation";
 
 
 export default function ProfilePage() {
-    const router = useRouter()
+    const router = useRouter();
+
     const [data, setData] = useState("nothing")
+
     const logout = async () => {
         try {
             await axios.get('/api/users/logout')
@@ -22,8 +24,10 @@ export default function ProfilePage() {
 
     const getUserDetails = async () => {
         const res = await axios.get('/api/users/me')
+        const userId = res.data.data._id;
         console.log(res.data);
         setData(res.data.data._id)
+        router.push(`/profile/${userId}`);
     }
 
     return (
