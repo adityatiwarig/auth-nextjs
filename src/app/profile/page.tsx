@@ -2,7 +2,7 @@
 import axios from "axios";
 import Link from "next/link";
 import React, {useState} from "react";
-import {toast} from "react-hot-toast";
+import {toast,Toaster} from "react-hot-toast";
 import {useRouter} from "next/navigation";
 
 
@@ -26,12 +26,14 @@ export default function ProfilePage() {
         const res = await axios.get('/api/users/me')
         const userId = res.data.data._id;
         console.log(res.data);
+        toast.success("User id fetched")
         setData(res.data.data._id)
         router.push(`/profile/${userId}`);
     }
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen py-2">
+            <Toaster position="top-right" reverseOrder={false} />
             <h1>Profile</h1>
             <hr />
             <p>Profile page</p>

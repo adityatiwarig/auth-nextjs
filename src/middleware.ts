@@ -9,11 +9,11 @@ export default function middleware(request: NextRequest) {
 
   const token = request.cookies.get('token')?.value || ''
 
-  if(isPublicPath && token) {
+  if(isPublicPath && token) {            // AGR DONO  HAI TO HOME PE  REDIRECT KRO
     return NextResponse.redirect(new URL('/', request.nextUrl))
   }
 
-  if (!isPublicPath && !token) {
+  if (!isPublicPath && !token) {          // AGR LOGOUT H TB BHEJO LOGIN PE
     return NextResponse.redirect(new URL('/login', request.nextUrl))
   }
     
@@ -21,7 +21,7 @@ export default function middleware(request: NextRequest) {
 
 
 export const config = {
-  matcher: [
+  matcher: [                    // JITNE BHI PAGES HAI WO.
     '/',
     '/profile',
     '/login',

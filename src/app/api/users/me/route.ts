@@ -13,7 +13,7 @@ export async function GET(request:NextRequest){
 
         const user = await User.findOne({_id: userId}).select("-password"); // id lelo and pass nai
 
-        return NextResponse.json({
+        return NextResponse.json({    // USER MIL GYA 
             message: "User found",
             data: user
         })
