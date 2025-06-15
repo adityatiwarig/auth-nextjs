@@ -1,20 +1,25 @@
-import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();
+import mongoose from 'mongoose';
 
 export async function connect() {
-    
-    if (!process.env.MONGO_URI) {
-        console.log(" MONGO_URI is undefined. Something is wrong.");
-        return;
+    try {
+        mongoose.connect(process.env.MONGO_URI!);
+        const connection = mongoose.connection;
+
+        connection.on('connected', () => {
+            console.log('MongoDB connected successfully');
+        })
+
+        connection.on('error', (err) => {
+            console.log('MongoDB connection error. Please make sure MongoDB is running. ' + err);
+            process.exit();
+        })
+
+    } catch (error) {
+        console.log('Something goes wrong!');
+        console.log(error);
+        
     }
 
-    try {
-        await mongoose.connect(process.env.MONGO_URI);
-        console.log("✅ MongoDB connected successfully");
-    } catch (error) {
-        console.log("❌ Error while connecting MongoDB");
-        console.log(error);
-    }
+
 }
