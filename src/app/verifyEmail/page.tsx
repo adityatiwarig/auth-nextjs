@@ -9,7 +9,7 @@ export default function VerifyEmailPage() {
     const [error, setError] = useState(false);
     const [verified, setVerified] = useState(false);
 
-    // ✅ Moved outside
+    
     useEffect(() => {
         const urlToken = window.location.search.split("=")[1];
         setToken(urlToken || '');
