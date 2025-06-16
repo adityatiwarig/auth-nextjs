@@ -7,7 +7,7 @@ import axios from "axios";
 import { toast, Toaster } from "react-hot-toast"; //  Toast import
 
 export default function LoginPage() {
-    const router = useRouter();
+    const router = useRouter();            //ROUTE CHANGE KRNA HAI TB
     const [user, setUser] = React.useState({
         email: "",
         password: "",
@@ -23,7 +23,7 @@ export default function LoginPage() {
 
             console.log("Login success", response.data);
             
-            toast.success("Login success"); // USE NICHE DEKHEGA RETURN ME
+            toast.success("Login success"); // top right me pop up hoga
 
             router.push("/profile");
         } catch (error: any) {

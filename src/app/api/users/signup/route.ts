@@ -10,10 +10,10 @@ connect()
 
 export async function POST(request: NextRequest){
     try {
-        const reqBody = await request.json()
+        const reqBody = await request.json()        // body me se req aise hi lete hai
         const {username, email, password} = reqBody
 
-        console.log(reqBody);
+        console.log(reqBody);           // teno show kr dega
 
         //check if user already exists
         const user = await User.findOne({email})
@@ -23,8 +23,8 @@ export async function POST(request: NextRequest){
         }
 
         //hash password
-        const salt = await bcryptjs.genSalt(10)
-        const hashedPassword = await bcryptjs.hash(password, salt)
+        const salt = await bcryptjs.genSalt(10)  // MANUALLY TRACK KRNE KE LIYE
+        const hashedPassword = await bcryptjs.hash(password, salt)   // salt ke jaagah 10 krdo sidhe
 
         const newUser = new User({
             username,
@@ -32,7 +32,7 @@ export async function POST(request: NextRequest){
             password: hashedPassword
         })
 
-        const savedUser = await newUser.save()
+        const savedUser = await newUser.save()     // ye save hoga db me
         console.log(savedUser);
 
         //send verification email
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest){
         try {
             await sendEmail({
                 email,
-                emailType: "VERIFY",
+                emailType: "VERIFY",       // SIGNUP KE TIME VERIFY BHEJA GYA ISILIYE AARHA HAI
                 userId: savedUser._id
             });
         } catch (error) {

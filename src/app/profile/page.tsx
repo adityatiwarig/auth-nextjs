@@ -13,7 +13,7 @@ export default function ProfilePage() {
 
     const logout = async () => {
         try {
-            await axios.get('/api/users/logout')
+            await axios.get('/api/users/logout')   // LOGOUT ME BHI GET USE KRE THE
             toast.success('Logout successful')
             router.push('/login')
         } catch (error:any) {
@@ -27,7 +27,7 @@ export default function ProfilePage() {
         const userId = res.data.data._id;
         console.log(res.data);
         toast.success("User id fetched")
-        setData(res.data.data._id)
+        setData(userId)
         router.push(`/profile/${userId}`);
     }
 

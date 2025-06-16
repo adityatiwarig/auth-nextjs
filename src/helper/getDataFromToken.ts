@@ -3,11 +3,11 @@ import jwt from "jsonwebtoken";
 
 export  const getDataFromToken = (request: NextRequest) => {
     try {
-        const token = request.cookies.get("token")?.value || '';
+        const token = request.cookies.get("token")?.value || '';  // hai to lelo nai h to empty lelo string
 
         const decodedToken:any = jwt.verify(token, process.env.TOKEN_SECRET!);
         
-        return decodedToken.id;
+        return decodedToken.id;  // token ki id leliya
     } catch (error: any) {
         throw new Error(error.message);
     }

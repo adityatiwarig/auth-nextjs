@@ -9,7 +9,7 @@ import { toast,Toaster } from "react-hot-toast";
 export default function SignupPage() {
     const router = useRouter();
 
-    const [user, setUser] = React.useState({
+    const [user, setUser] = React.useState({   // teno user me object bnake dale ho
         email: "",
         password: "",
         username: "",
@@ -20,7 +20,7 @@ export default function SignupPage() {
 
     const onSignup = async () => {
         try {
-            setLoading(true);    // loading show krne lgo
+            setLoading(true);    // loading show krne lgo click ke baad
 
             // AXIOS AUTOMATICALLY JSON PARSE KR DETA HAI FETCH KRTA  
             const response = await axios.post("/api/users/signup", user);  //USER SE REQ BHEJ RHA HAI
@@ -56,7 +56,7 @@ export default function SignupPage() {
             <Toaster position="top-right" reverseOrder={false} /> {/* Toast show yahi hoga top-right */}
             <div className="w-full max-w-md bg-white/5 backdrop-blur-md border border-gray-600/40 rounded-2xl p-8 shadow-lg text-white">
                 <h1 className="text-3xl font-bold text-center mb-6">
-                    {loading ? "Processing..." : "Signup"}
+                    {loading ? "Processing..." : "Signup"}         
                 </h1>
                 <hr className="mb-6 border-gray-500" />
 
@@ -68,7 +68,7 @@ export default function SignupPage() {
                     id="username"
                     type="text"
                     value={user.username}
-                    onChange={(e) => setUser({ ...user, username: e.target.value })}
+                    onChange={(e) => setUser({...user, username: e.target.value })}
                     placeholder="username"
                 />
 

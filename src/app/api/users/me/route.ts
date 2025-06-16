@@ -15,7 +15,7 @@ export async function GET(request:NextRequest){
 
         return NextResponse.json({    // USER MIL GYA 
             message: "User found",
-            data: user
+            data: user          // id , username aur email meilga data me user ka
         })
     } catch (error:any) {
         return NextResponse.json({error: error.message}, {status: 400});

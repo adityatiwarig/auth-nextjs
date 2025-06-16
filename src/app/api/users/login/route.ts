@@ -19,7 +19,8 @@ export async function POST(request: NextRequest) {
         }
         console.log("User found:", user.email);
 
-        // ✅ Check if email is verified
+
+        // ..VERIFY KRO TBHI LOGIN HOGA
         if (!user.isVerified) {
             return NextResponse.json({ error: "Please verify your email before logging in." }, { status: 401 });
         }

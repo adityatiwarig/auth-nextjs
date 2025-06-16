@@ -7,7 +7,7 @@ import crypto from "crypto";
 export const sendEmail = async({email, emailType, userId}:any) => {
     try {
         // create a hased token
-        const hashedToken = crypto.randomBytes(32).toString("hex");
+        const hashedToken = crypto.randomBytes(32).toString("hex");  // BRCYPT SE CRYPTO ME CONVERT KRO
 
         if (emailType === "VERIFY") {
             await User.findByIdAndUpdate(userId, 

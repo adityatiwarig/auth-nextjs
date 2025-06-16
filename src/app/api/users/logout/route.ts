@@ -8,14 +8,14 @@ export async function GET() {
         });
 
         
-        response.cookies.set("token", "", {
+        response.cookies.set("token", "", {    // token naam wali cookie ko expire kro
             httpOnly: true,
-            expires: new Date(0),
+            expires: new Date(0),             // abhi expire kro
             
         });
 
 
-        return response;
+        return response;   // message and success
 
     } catch (error: any) {
         return NextResponse.json(
