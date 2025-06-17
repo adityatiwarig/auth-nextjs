@@ -88,6 +88,11 @@ export default function LoginPage() {
                     {buttonDisabled ? "No Login" : "LOGIN.."}
                 </button>
 
+                <button className="p-2 m-1 border hover:bg-white hover:text-black border-gray-300 transition-colors duration-200 ease-in-out rounded-lg mb-4 focus:outline-none focus:border-gray-600">
+                  <Link href="/forgotpassword">Forgot Password</Link>
+               </button>
+
+
                 <Link
                     href="/signup"
                     className="block text-center text-sm text-blue-400 hover:underline"

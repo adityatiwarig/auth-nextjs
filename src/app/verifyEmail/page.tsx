@@ -11,14 +11,14 @@ export default function VerifyEmailPage() {
 
     
     useEffect(() => {
-        const urlToken = window.location.search.split("=")[1];
+        const urlToken = window.location.search.split("=")[1];  // url se token mil jayega
         setToken(urlToken || '');
     }, []);
 
     useEffect(() => {
         const verifyUserEmail = async () => {
             try {
-                await axios.post("/api/users/verifyEmail", { token });
+                await axios.post("/api/users/verifyEmail", { token });  //backnd ko bheja ki token match kro
                 setVerified(true); // ✅ Only if success
             } catch (error: any) {
                 setError(true);
